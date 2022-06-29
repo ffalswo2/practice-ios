@@ -30,9 +30,16 @@
 		B5ADF5292861ED7100CCF023 /* DispatchQueue.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5ADF5282861ED7100CCF023 /* DispatchQueue.storyboard */; };
 		B5ADF52B2863798900CCF023 /* hugging.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5ADF52A2863798900CCF023 /* hugging.storyboard */; };
 		B5ADF53028639A0F00CCF023 /* CodeLayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ADF52F28639A0F00CCF023 /* CodeLayoutViewController.swift */; };
+		B5ADF5AC286B730100CCF023 /* PhotoMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ADF5AB286B730100CCF023 /* PhotoMainViewController.swift */; };
+		B5ADF5B0286B809B00CCF023 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ADF5AF286B809B00CCF023 /* TagCollectionViewCell.swift */; };
+		B5B5C10B286CC2C200FC5134 /* TagDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B5C10A286CC2C200FC5134 /* TagDataModel.swift */; };
+		E49CFECB0D5A390D4511CC58 /* Pods_practice_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 362A6E4D0AB187832A6FA994 /* Pods_practice_ios.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		362A6E4D0AB187832A6FA994 /* Pods_practice_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_practice_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		37400F5FE560EA9C594E0F50 /* Pods-practice-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-practice-ios.debug.xcconfig"; path = "Target Support Files/Pods-practice-ios/Pods-practice-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		902D47A9545E2785905B1086 /* Pods-practice-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-practice-ios.release.xcconfig"; path = "Target Support Files/Pods-practice-ios/Pods-practice-ios.release.xcconfig"; sourceTree = "<group>"; };
 		B5684D6D283A599400470CF8 /* practice-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "practice-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5684D70283A599400470CF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5684D72283A599400470CF8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +65,9 @@
 		B5ADF5282861ED7100CCF023 /* DispatchQueue.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DispatchQueue.storyboard; sourceTree = "<group>"; };
 		B5ADF52A2863798900CCF023 /* hugging.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = hugging.storyboard; sourceTree = "<group>"; };
 		B5ADF52F28639A0F00CCF023 /* CodeLayoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeLayoutViewController.swift; sourceTree = "<group>"; };
+		B5ADF5AB286B730100CCF023 /* PhotoMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMainViewController.swift; sourceTree = "<group>"; };
+		B5ADF5AF286B809B00CCF023 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
+		B5B5C10A286CC2C200FC5134 /* TagDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,17 +75,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E49CFECB0D5A390D4511CC58 /* Pods_practice_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B0092E159E631BB4DDCF9448 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				362A6E4D0AB187832A6FA994 /* Pods_practice_ios.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B5684D64283A599400470CF8 = {
 			isa = PBXGroup;
 			children = (
 				B5684D6F283A599400470CF8 /* practice-ios */,
 				B5684D6E283A599400470CF8 /* Products */,
+				DBBCB9F71800952AEC24F68C /* Pods */,
+				B0092E159E631BB4DDCF9448 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,6 +111,7 @@
 		B5684D6F283A599400470CF8 /* practice-ios */ = {
 			isa = PBXGroup;
 			children = (
+				B5ADF5AA286B72E300CCF023 /* PhotoGallery */,
 				B5ADF52C286399E600CCF023 /* Layout */,
 				B5ADF5272861ED5C00CCF023 /* DispatchQueue */,
 				B5684D84283A599B00470CF8 /* PassingData */,
@@ -190,6 +212,41 @@
 			path = Layout;
 			sourceTree = "<group>";
 		};
+		B5ADF5AA286B72E300CCF023 /* PhotoGallery */ = {
+			isa = PBXGroup;
+			children = (
+				B5B5C109286CC2B600FC5134 /* Model */,
+				B5B5C106286CC1A600FC5134 /* Cells */,
+				B5ADF5AB286B730100CCF023 /* PhotoMainViewController.swift */,
+			);
+			path = PhotoGallery;
+			sourceTree = "<group>";
+		};
+		B5B5C106286CC1A600FC5134 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B5ADF5AF286B809B00CCF023 /* TagCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		B5B5C109286CC2B600FC5134 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B5B5C10A286CC2C200FC5134 /* TagDataModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DBBCB9F71800952AEC24F68C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				37400F5FE560EA9C594E0F50 /* Pods-practice-ios.debug.xcconfig */,
+				902D47A9545E2785905B1086 /* Pods-practice-ios.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -197,9 +254,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B5684D81283A599500470CF8 /* Build configuration list for PBXNativeTarget "practice-ios" */;
 			buildPhases = (
+				1C374AAD12B600788BB3DA4B /* [CP] Check Pods Manifest.lock */,
 				B5684D69283A599400470CF8 /* Sources */,
 				B5684D6A283A599400470CF8 /* Frameworks */,
 				B5684D6B283A599400470CF8 /* Resources */,
+				D431E25528B9266C9D81DC9A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -264,6 +323,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1C374AAD12B600788BB3DA4B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-practice-ios-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D431E25528B9266C9D81DC9A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-practice-ios/Pods-practice-ios-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-practice-ios/Pods-practice-ios-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-practice-ios/Pods-practice-ios-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B5684D69283A599400470CF8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -272,10 +373,13 @@
 				B5684D98283A685300470CF8 /* ClosureViewController.swift in Sources */,
 				B5ADF5262861ED4E00CCF023 /* DispatchQueue.swift in Sources */,
 				B5684D8E283A5CF600470CF8 /* SegueViewController.swift in Sources */,
+				B5ADF5B0286B809B00CCF023 /* TagCollectionViewCell.swift in Sources */,
 				B5684D9C283A6E1600470CF8 /* NotiViewController.swift in Sources */,
 				B5684D94283A611000470CF8 /* DelegateViewController.swift in Sources */,
+				B5ADF5AC286B730100CCF023 /* PhotoMainViewController.swift in Sources */,
 				B5684D75283A599400470CF8 /* ViewController.swift in Sources */,
 				B5684D71283A599400470CF8 /* AppDelegate.swift in Sources */,
+				B5B5C10B286CC2C200FC5134 /* TagDataModel.swift in Sources */,
 				B5684D73283A599400470CF8 /* SceneDelegate.swift in Sources */,
 				B5684D90283A5E1F00470CF8 /* InstanceViewController.swift in Sources */,
 				B5ADF53028639A0F00CCF023 /* CodeLayoutViewController.swift in Sources */,
@@ -422,6 +526,7 @@
 		};
 		B5684D82283A599500470CF8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37400F5FE560EA9C594E0F50 /* Pods-practice-ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -448,6 +553,7 @@
 		};
 		B5684D83283A599500470CF8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 902D47A9545E2785905B1086 /* Pods-practice-ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
