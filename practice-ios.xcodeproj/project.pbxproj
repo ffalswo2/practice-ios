@@ -33,6 +33,7 @@
 		B5ADF5AC286B730100CCF023 /* PhotoMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ADF5AB286B730100CCF023 /* PhotoMainViewController.swift */; };
 		B5ADF5B0286B809B00CCF023 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ADF5AF286B809B00CCF023 /* TagCollectionViewCell.swift */; };
 		B5B5C10B286CC2C200FC5134 /* TagDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B5C10A286CC2C200FC5134 /* TagDataModel.swift */; };
+		B5B5C10D286E086700FC5134 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B5C10C286E086700FC5134 /* PhotoCollectionViewCell.swift */; };
 		E49CFECB0D5A390D4511CC58 /* Pods_practice_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 362A6E4D0AB187832A6FA994 /* Pods_practice_ios.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +69,7 @@
 		B5ADF5AB286B730100CCF023 /* PhotoMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMainViewController.swift; sourceTree = "<group>"; };
 		B5ADF5AF286B809B00CCF023 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
 		B5B5C10A286CC2C200FC5134 /* TagDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagDataModel.swift; sourceTree = "<group>"; };
+		B5B5C10C286E086700FC5134 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				B5ADF5AF286B809B00CCF023 /* TagCollectionViewCell.swift */,
+				B5B5C10C286E086700FC5134 /* PhotoCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				B5ADF5AC286B730100CCF023 /* PhotoMainViewController.swift in Sources */,
 				B5684D75283A599400470CF8 /* ViewController.swift in Sources */,
 				B5684D71283A599400470CF8 /* AppDelegate.swift in Sources */,
+				B5B5C10D286E086700FC5134 /* PhotoCollectionViewCell.swift in Sources */,
 				B5B5C10B286CC2C200FC5134 /* TagDataModel.swift in Sources */,
 				B5684D73283A599400470CF8 /* SceneDelegate.swift in Sources */,
 				B5684D90283A5E1F00470CF8 /* InstanceViewController.swift in Sources */,

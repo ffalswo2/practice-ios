@@ -11,6 +11,7 @@ import SnapKit
 
 import Then
 
+import PhotosUI
 
 class PhotoMainViewController: UIViewController {
 
@@ -25,10 +26,13 @@ class PhotoMainViewController: UIViewController {
     }()
     
     
-    lazy var photoCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
-        $0.backgroundColor = .systemOrange
+    lazy var photoCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.showsVerticalScrollIndicator = false
         
-    }
+        return cv
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,10 +42,16 @@ class PhotoMainViewController: UIViewController {
     }
     
     func setCollectionView() {
-        tagCollectionView.register(TagCollectionViewCell.self, forCellWithReuseIdentifier: "TagCollectionViewCell")
+        tagCollectionView.register(TagCollectionViewCell.self, forCellWithReuseIdentifier: TagCollectionViewCell.identifier)
+        photoCollectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
+        
+        
         
         tagCollectionView.delegate = self
         tagCollectionView.dataSource = self
+        
+        photoCollectionView.delegate = self
+        photoCollectionView.dataSource = self
     }
     
     func setNavigationBar() {
@@ -50,7 +60,7 @@ class PhotoMainViewController: UIViewController {
         
         self.title = "검색 결과"
         
-        let moreOptionsItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .done, target: self, action: #selector(moreBtnDidTapped))
+        let moreOptionsItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .done, target: self, action: #selector(checkPermission))
         
         let refreshItem = UIBarButtonItem(image: UIImage(systemName: "arrow.clockwise"), style: .done, target: self, action: #selector(refreshBtnDidTapped))
         
@@ -60,6 +70,43 @@ class PhotoMainViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = moreOptionsItem
         self.navigationItem.leftBarButtonItem = refreshItem
     }
+    
+    @objc private func checkPermission() {
+        if PHPhotoLibrary.authorizationStatus(for: .readWrite) == .authorized || PHPhotoLibrary.authorizationStatus(for: .readWrite) == .limited {
+            Dispatch.DispatchQueue.main.async {
+                self.showPhotoLibrary()
+            }
+            
+        } else if PHPhotoLibrary.authorizationStatus(for: .readWrite) == .denied {
+            Dispatch.DispatchQueue.main.async {
+                self.makeAlertsWhenPhotoAccessDenied()
+            }
+        } else if PHPhotoLibrary.authorizationStatus(for: .readWrite) == .notDetermined {
+            PHPhotoLibrary.requestAuthorization(for: .readWrite) { status in
+                self.checkPermission()
+            }
+        }
+    }
+    
+    
+    private func makeAlertsWhenPhotoAccessDenied() {
+        let alert = UIAlertController(title: "앨범 접근 권한을 활성화 해주세요", message: nil, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "닫기", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "설정으로 가기", style: .default, handler: { action in
+            
+            guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+            
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
+            
+        }))
+        
+        self.present(alert, animated: true)
+    }
+    
+    
     
     func setUI() {
         view.addSubview(tagCollectionView)
@@ -75,10 +122,19 @@ class PhotoMainViewController: UIViewController {
     }
 }
 
-
+//MARK: Objective-C methods
 extension PhotoMainViewController {
     
-    @objc func moreBtnDidTapped() {
+    @objc func showPhotoLibrary() {
+        let library = PHPhotoLibrary.shared()
+        var config = PHPickerConfiguration(photoLibrary: library)
+        config.selectionLimit = 10
+        
+        let picker = PHPickerViewController(configuration: config)
+        
+        picker.delegate = self
+        
+        present(picker, animated: true)
     }
     
     @objc func refreshBtnDidTapped() {
@@ -97,7 +153,8 @@ extension PhotoMainViewController: UICollectionViewDataSource {
         if collectionView == tagCollectionView {
             return TagDataModel.sampleData.count
         }
-        return 0
+        
+        return 30
         
     }
     
@@ -108,7 +165,10 @@ extension PhotoMainViewController: UICollectionViewDataSource {
             return cell
         }
         
-        return UICollectionViewCell()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as? PhotoCollectionViewCell else { return UICollectionViewCell() }
+        
+        
+        return cell
         
     }
 }
@@ -125,7 +185,9 @@ extension PhotoMainViewController: UICollectionViewDelegateFlowLayout {
             
             return CGSize(width: cellWidth, height: 32)
         }
-        return CGSize(width: 0, height: 0)
+        
+        
+        return CGSize(width: UIScreen.main.bounds.width / 3 - 2, height: 100)
         
     }
     
@@ -140,15 +202,29 @@ extension PhotoMainViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         if collectionView == tagCollectionView {
-            return 10
+            return 0
         }
         
-        return 0
+        return 1
         
         
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 0
-//    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        
+        if collectionView == photoCollectionView {
+            return 1
+        }
+        return 10
+    }
+}
+
+
+extension PhotoMainViewController: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        
+        
+        self.dismiss(animated: true)
+    }
+    
 }
