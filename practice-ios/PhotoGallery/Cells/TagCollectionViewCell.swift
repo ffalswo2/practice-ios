@@ -20,8 +20,6 @@ class TagCollectionViewCell: UICollectionViewCell {
         config.imagePadding = 5
         config.imagePlacement = .trailing
         config.contentInsets = NSDirectionalEdgeInsets(top: .zero, leading: 10, bottom: .zero, trailing: .zero)
-
-        
         
         let button = UIButton(configuration: config)
         return button
@@ -47,10 +45,6 @@ class TagCollectionViewCell: UICollectionViewCell {
     
     func setData(_ data: TagDataModel) {
         tagButton.setTitle(data.tagName, for: .normal)
-        tagButton.titleLabel?.font = .systemFont(ofSize: 1)
-        tagButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        tagButton.titleLabel?.minimumScaleFactor = 0.5
-        tagButton.titleLabel?.numberOfLines = 1
     }
     
     

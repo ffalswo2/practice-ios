@@ -14,13 +14,14 @@ import Then
 import PhotosUI
 
 class PhotoMainViewController: UIViewController {
+    
+    var fetchResults: PHFetchResult<PHAsset>?
 
     lazy var tagCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.showsHorizontalScrollIndicator = false
         layout.scrollDirection = .horizontal
-        
         
         return cv
     }()
@@ -154,7 +155,7 @@ extension PhotoMainViewController: UICollectionViewDataSource {
             return TagDataModel.sampleData.count
         }
         
-        return 30
+        return self.fetchResults?.count ?? 0
         
     }
     
@@ -168,6 +169,10 @@ extension PhotoMainViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as? PhotoCollectionViewCell else { return UICollectionViewCell() }
         
         
+        if let asset = fetchResults?[indexPath.row] {
+            cell.setPhotos(asset: asset)
+        }
+        
         return cell
         
     }
@@ -179,8 +184,9 @@ extension PhotoMainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == tagCollectionView {
             let titleInset = 10 + 10
+            let cancelBtnWidth = 40
             
-            let cellWidth = TagDataModel.sampleData[indexPath.row].tagName.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]).width + CGFloat(titleInset) + 40
+            let cellWidth = TagDataModel.sampleData[indexPath.row].tagName.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]).width + CGFloat(titleInset) + CGFloat(cancelBtnWidth)
 
             
             return CGSize(width: cellWidth, height: 32)
@@ -204,10 +210,7 @@ extension PhotoMainViewController: UICollectionViewDelegateFlowLayout {
         if collectionView == tagCollectionView {
             return 0
         }
-        
         return 1
-        
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -223,8 +226,11 @@ extension PhotoMainViewController: UICollectionViewDelegateFlowLayout {
 extension PhotoMainViewController: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         
+        let photoIdentifiers = results.map { $0.assetIdentifier ?? "" }
+        self.fetchResults = PHAsset.fetchAssets(withLocalIdentifiers: photoIdentifiers, options: nil)
+        
+        photoCollectionView.reloadData()
         
         self.dismiss(animated: true)
     }
-    
 }

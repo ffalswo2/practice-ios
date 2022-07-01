@@ -7,6 +7,8 @@
 
 import UIKit
 
+import Photos
+
 class PhotoCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "PhotoCollectionViewCell"
@@ -33,8 +35,22 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func setPhotoCellData() {
+//    func setPhotoCellData(_ asset) {
+//        photoImageView.image = asset
+//    }
+    
+    func setPhotos(asset: PHAsset) {
+        let photoManager = PHImageManager()
+
+        let scale = UIScreen.main.scale
+        let imageSize = CGSize(width: 125 * scale, height: 125 * scale)
         
+        let options = PHImageRequestOptions()
+        options.deliveryMode = .highQualityFormat
+
+        photoManager.requestImage(for: asset, targetSize: imageSize, contentMode: .aspectFill, options: options) { photo, info in
+            self.photoImageView.image = photo
+        }
     }
     
     
