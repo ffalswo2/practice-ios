@@ -35,9 +35,6 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         }
     }
     
-//    func setPhotoCellData(_ asset) {
-//        photoImageView.image = asset
-//    }
     
     func setPhotos(asset: PHAsset) {
         let photoManager = PHImageManager()

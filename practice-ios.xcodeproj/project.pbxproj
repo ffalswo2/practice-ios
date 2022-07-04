@@ -34,6 +34,10 @@
 		B5ADF5B0286B809B00CCF023 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ADF5AF286B809B00CCF023 /* TagCollectionViewCell.swift */; };
 		B5B5C10B286CC2C200FC5134 /* TagDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B5C10A286CC2C200FC5134 /* TagDataModel.swift */; };
 		B5B5C10D286E086700FC5134 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B5C10C286E086700FC5134 /* PhotoCollectionViewCell.swift */; };
+		B5B5C1102871960900FC5134 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B5C10F2871960900FC5134 /* MainViewController.swift */; };
+		B5B5C112287198BC00FC5134 /* EventsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B5C111287198BC00FC5134 /* EventsCollectionViewCell.swift */; };
+		B5B5C11628719D5200FC5134 /* EventDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B5C11528719D5200FC5134 /* EventDataModel.swift */; };
+		B5B5C1182871A64800FC5134 /* CollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B5C1172871A64800FC5134 /* CollectionReusableView.swift */; };
 		E49CFECB0D5A390D4511CC58 /* Pods_practice_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 362A6E4D0AB187832A6FA994 /* Pods_practice_ios.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +74,10 @@
 		B5ADF5AF286B809B00CCF023 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
 		B5B5C10A286CC2C200FC5134 /* TagDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagDataModel.swift; sourceTree = "<group>"; };
 		B5B5C10C286E086700FC5134 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		B5B5C10F2871960900FC5134 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		B5B5C111287198BC00FC5134 /* EventsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCollectionViewCell.swift; sourceTree = "<group>"; };
+		B5B5C11528719D5200FC5134 /* EventDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDataModel.swift; sourceTree = "<group>"; };
+		B5B5C1172871A64800FC5134 /* CollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +121,7 @@
 		B5684D6F283A599400470CF8 /* practice-ios */ = {
 			isa = PBXGroup;
 			children = (
+				B5B5C10E287195EC00FC5134 /* Hous */,
 				B5ADF5AA286B72E300CCF023 /* PhotoGallery */,
 				B5ADF52C286399E600CCF023 /* Layout */,
 				B5ADF5272861ED5C00CCF023 /* DispatchQueue */,
@@ -237,6 +246,33 @@
 			isa = PBXGroup;
 			children = (
 				B5B5C10A286CC2C200FC5134 /* TagDataModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B5B5C10E287195EC00FC5134 /* Hous */ = {
+			isa = PBXGroup;
+			children = (
+				B5B5C11428719D3500FC5134 /* Model */,
+				B5B5C113287198C100FC5134 /* Cells */,
+				B5B5C10F2871960900FC5134 /* MainViewController.swift */,
+				B5B5C1172871A64800FC5134 /* CollectionReusableView.swift */,
+			);
+			path = Hous;
+			sourceTree = "<group>";
+		};
+		B5B5C113287198C100FC5134 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B5B5C111287198BC00FC5134 /* EventsCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		B5B5C11428719D3500FC5134 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B5B5C11528719D5200FC5134 /* EventDataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -374,12 +410,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5684D98283A685300470CF8 /* ClosureViewController.swift in Sources */,
+				B5B5C11628719D5200FC5134 /* EventDataModel.swift in Sources */,
 				B5ADF5262861ED4E00CCF023 /* DispatchQueue.swift in Sources */,
 				B5684D8E283A5CF600470CF8 /* SegueViewController.swift in Sources */,
 				B5ADF5B0286B809B00CCF023 /* TagCollectionViewCell.swift in Sources */,
 				B5684D9C283A6E1600470CF8 /* NotiViewController.swift in Sources */,
+				B5B5C112287198BC00FC5134 /* EventsCollectionViewCell.swift in Sources */,
 				B5684D94283A611000470CF8 /* DelegateViewController.swift in Sources */,
+				B5B5C1182871A64800FC5134 /* CollectionReusableView.swift in Sources */,
 				B5ADF5AC286B730100CCF023 /* PhotoMainViewController.swift in Sources */,
+				B5B5C1102871960900FC5134 /* MainViewController.swift in Sources */,
 				B5684D75283A599400470CF8 /* ViewController.swift in Sources */,
 				B5684D71283A599400470CF8 /* AppDelegate.swift in Sources */,
 				B5B5C10D286E086700FC5134 /* PhotoCollectionViewCell.swift in Sources */,
